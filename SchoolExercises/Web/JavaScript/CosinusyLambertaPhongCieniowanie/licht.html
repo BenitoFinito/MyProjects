@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+
+window.onload = function() {
+  // Pobierz referencje do obu divów
+    document.getElementById('div2').style.height = getComputedStyle(document.getElementById('div2')).height;
+
+  // Ustaw wysokość drugiego diva na wysokość pierwszego diva
+    div2.style.height = getComputedStyle(div1).height;
+};
+
+    function katToRad(ecke) { return ecke * Math.PI / 180; }
+
+    var r = 0, g = 0, b = 0, ecke = 0;
+
+    function f() {
+        r1 = document.getElementById("R1").value;
+        r2 = document.getElementById("R2").value;
+        r3 = document.getElementById("R3").value;
+
+        g1 = document.getElementById("G1").value;
+        g2 = document.getElementById("G2").value;
+        g3 = document.getElementById("G3").value;
+
+        b1 = document.getElementById("B1").value;
+        b2 = document.getElementById("B2").value;
+        b3 = document.getElementById("B3").value;
+
+        ecke1 = document.getElementById("Ecke1").value;
+        ecke2 = document.getElementById("Ecke2").value;
+        ka = document.getElementById("ka").value;
+        kd = document.getElementById("kd").value;
+        ks = document.getElementById("ks").value;
+        n = document.getElementById("n").value;
+
+        document.getElementById("s1_1").innerHTML = parseInt(r1 * 255);
+        document.getElementById("s1_2").innerHTML = parseInt(g1 * 255);
+        document.getElementById("s1_3").innerHTML = parseInt(b1 * 255);
+
+        document.getElementById("s2_1").innerHTML = parseInt(r2 * 255);
+        document.getElementById("s2_2").innerHTML = parseInt(g2 * 255);
+        document.getElementById("s2_3").innerHTML = parseInt(b2 * 255);
+
+        document.getElementById("s3_1").innerHTML = parseInt(r3 * 255);
+        document.getElementById("s3_2").innerHTML = parseInt(g3 * 255);
+        document.getElementById("s3_3").innerHTML = parseInt(b3 * 255);
+
+        document.getElementById("s4_1").innerHTML = ecke1;
+        document.getElementById("s4_2").innerHTML = ecke2;
+
+        document.getElementById("s6").innerHTML = ka;
+        document.getElementById("s7").innerHTML = kd;
+        document.getElementById("s8").innerHTML = ks;
+        document.getElementById("s9").innerHTML = n;
+
+
+        Farbe1 = "rgb(" + parseInt(r1 * 255) + "," + parseInt(g1 * 255) + "," + parseInt(b1 * 255) + ")";
+        Farbe2 = "rgb(" + parseInt(r2 * 255) + "," + parseInt(g2 * 255) + "," + parseInt(b2 * 255) + ")";
+        Farbe3 = "rgb(" + parseInt(r3 * 255) + "," + parseInt(g3 * 255) + "," + parseInt(b3 * 255) + ")";
+
+        var i1 = ka*r1**255 + kd*r2**Math.cos(katToRad(ecke1))*255 + ks*r3**Math.pow(Math.cos(katToRad(ecke2)),n)*255;
+        var i2 = ka*g1**255 + kd*g2**Math.cos(katToRad(ecke1))*255 + ks*g3**Math.pow(Math.cos(katToRad(ecke2)),n)*255;
+        var i3 = ka*b1**255 + kd*b2**Math.cos(katToRad(ecke1))*255 + ks*b3**Math.pow(Math.cos(katToRad(ecke2)),n)*255;
+
+        document.getElementById("quadrat1").style.backgroundColor = Farbe1;
+        document.getElementById("quadrat2").style.backgroundColor = Farbe2;
+        document.getElementById("quadrat3").style.backgroundColor = Farbe3;
+
+        FarbeBeleuchtet = "rgb("+i1+","+i2+","+i3+")";
+        document.getElementById("div2").style.backgroundColor = FarbeBeleuchtet;
+        document.getElementById("s10").innerHTML = "rgb("+parseInt(i1)+","+parseInt(i2)+","+parseInt(i3)+")";
+    }
+</script>
+<body style="display: flex; justify-content: space-between; padding: 10px; padding-right: 50px; margin: 0;">
+    <div id="div1" style="border: 1px solid black; width: 400px; background-color: aliceblue;">
+        Światło otoczenia: <br>
+    <input type="range" value="0" id="R1" min="0" max="1" step="0.01" oninput="f()">Rot <span id="s1_1"></span><br>
+    <input type="range" value="0" id="G1" min="0" max="1" step="0.01" oninput="f()">Grün <span id="s1_2"></span><br>
+    <input type="range" value="0" id="B1" min="0" max="1" step="0.01" oninput="f()">Blau <span id="s1_3"></span><br>
+    <div id="quadrat1" style="width: 70px; height: 70px;"></div><br>
+        Światło kierunkowe: <br>
+    <input type="range" value="0" id="R2" min="0" max="1" step="0.01" oninput="f()">Rot <span id="s2_1"></span><br>
+    <input type="range" value="0" id="G2" min="0" max="1" step="0.01" oninput="f()">Grün <span id="s2_2"></span><br>
+    <input type="range" value="0" id="B2" min="0" max="1" step="0.01" oninput="f()">Blau <span id="s2_3"></span><br>
+    <div id="quadrat2" style="width: 70px; height: 70px;"></div><br>
+        Światło odbite: <br>
+    <input type="range" value="0" id="R3" min="0" max="1" step="0.01" oninput="f()">Rot <span id="s3_1"></span><br>
+    <input type="range" value="0" id="G3" min="0" max="1" step="0.01" oninput="f()">Grün <span id="s3_2"></span><br>
+    <input type="range" value="0" id="B3" min="0" max="1" step="0.01" oninput="f()">Blau <span id="s3_3"></span><br>
+    <div id="quadrat3" style="width: 70px; height: 70px;"></div><br>
+
+    <input type="range" value="0" id="Ecke1" min="-90" max="90" step="1" oninput="f()"><span id="s4_1"></span>° Kąt padania światła<br>
+    <input type="range" value="0" id="Ecke2" min="-90" max="90" step="1" oninput="f()"><span id="s4_2"></span>° Kąt obserwacji<br>
+    <input type="range" value="0" id="n" min="1" max="100" step="1" oninput="f()">N <span id="s9"></span><br><br>
+
+    <input type="range" value="0" id="ka" min="0" max="1" step="0.01" oninput="f()">Ka <span id="s6"></span><br>
+    <input type="range" value="0" id="kd" min="0" max="1" step="0.01" oninput="f()">Kd <span id="s7"></span><br>
+    <input type="range" value="0" id="ks" min="0" max="1" step="0.01" oninput="f()">Ks <span id="s8"></span><br>
+
+    <p>Finalny kolor: <span id="s10"></span></p>
+    </div>
+    <div id="div2" style="border: 1px solid black; width: 100%; margin-left: 40px; ">
+    </div>
+</body>
+</html>

@@ -1,0 +1,272 @@
+body{
+    font-family:sans-serif;
+    background: linear-gradient(to bottom right, blue , whitesmoke 50%, darkgreen);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    background-attachment: fixed;
+    overflow: auto;
+}
+header{
+    width: 85%;
+    height: 150px;
+    background-image: linear-gradient(blueviolet, green);
+    border: 5px solid black;
+    border-radius: 20px;
+    color: white;
+    margin: auto;
+    margin-bottom: 10px;
+    position: relative;
+}
+h2{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+img{
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 300px;
+    max-height: 80px;
+    text-align: center;
+    line-height: 80px;
+}
+#userinfo{
+    width: 180px;
+    height: 40px;
+    position: absolute;
+    border: solid black 3px;
+    border-radius: 10px;
+    background-image: radial-gradient(white 50%,yellow);
+    top: 8px;
+    left: 10px;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+    padding-top: 8px;
+}
+nav{
+    width: 350px;
+    height: 40px;
+    position: absolute;
+    border: solid black 3px;
+    border-radius: 10px;
+    background-color: gainsboro;
+    top: 8px;
+    right: 10px;
+    text-align: center;
+    line-height: 40px;
+    margin: auto;
+    font-size: 16px;
+}
+a{
+margin-left: 10px;
+margin-right: 10px;
+}
+#log{
+    width: 75px;
+    height: 35px;
+    position: absolute;
+    left: 220px;
+    border: solid 2px black;
+    border-radius: 10px;
+    background-color: lightgrey;
+    color: darkblue;
+    font-weight:bold;
+    transition: 0.2s ease;
+    top: 17px;
+}
+#log:hover{
+    background-color: slategray;
+    color: blue;
+}
+#log:active{
+    background-color: rgb(65, 66, 68);
+    color: cyan;
+}
+#rola1,#rola2{
+    height: 30px;
+    width: 70px;
+    color: black;
+    text-align: center;
+    line-height: 30px;
+    position: absolute;
+    border-radius: 10px;
+    border: solid black 2px;
+    top: 62px;
+    left: 66px;
+    font-weight: bold;
+}
+#rola1{
+    background-image: radial-gradient(white 50%,lime);
+}
+#rola2{
+    background-image: radial-gradient(white 50%,red);
+}
+#main{
+    width: 85%;
+    height: 100%;
+    background-color:rgba(255, 255, 255, 0.65);
+    margin: auto;
+    border: black solid 3px;
+    border-radius: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+.first{
+    font-weight: bold;
+}
+.second{
+    font-size: 18px;
+}
+.third{
+    font-weight: bold;
+    font-size: 18px;
+}
+.fourth{
+    font-size: 15px;
+}
+#lista{
+    width: 200px;
+    margin-bottom: 10px;
+    border: solid black 1px;
+    border-radius: 10px;
+    overflow:auto;
+    background-image: linear-gradient(greenyellow,yellow);
+    color: black;
+}
+#lista option:hover{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+#lista option:checked{
+    background-color: white;
+}
+#confirm{
+	border: solid black 2px;
+	height: 30px;
+	width: 100px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+#confirm:hover{
+	background-color:rgb(200, 200, 200, 0.5);
+}
+#confirm:active{
+	background-color:rgb(200, 200, 200);
+}
+#tabela{
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+table{
+    width: 70%;
+    margin: auto;
+    border: solid black 2px;
+    border-collapse: collapse;
+}
+.opcja{
+    font-size: 17px;
+    border: none;
+    background-color: transparent;
+    color: blue;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.opcja:hover{
+    cursor:pointer;
+}
+.opcja:active{
+    color: red;
+}
+.form{
+    margin: 10px;
+}
+#nazlogo{
+    width: 50%;
+    margin: auto;
+    border: 2px solid black;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+#nazwa{
+    border: solid black 1px;
+    background: none;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    width: 200px;
+    text-align: center;
+}
+#nazwa:hover, #nazwa:focus{
+    background-color: white;
+}
+#button{
+	border: solid black 2px;
+	height: 30px;
+	width: 100px;
+	border-radius: 10px;
+}
+#button:hover{
+	background-color:rgb(200, 200, 200, 0.5);
+}
+#button:active{
+	background-color:rgb(200, 200, 200);
+}
+.form1{
+    border: 2px dashed black;
+    width: 90%;
+    margin: auto;
+    height: 100px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    position: relative;
+}
+#dodwpis{
+    border: none;
+    background: none;
+    font-weight: 600;
+}
+#plusbutt{
+    border: 2px dashed black;
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#pluswpis{
+    border: none;
+    background: none;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.plus1{
+    border: 1px solid black;
+    height: 20px;
+    position: absolute;
+}
+.plus2{
+    border: 1px solid black;
+    width: 20px;
+    position: absolute;
+}
+#pluswpis:hover #plusbutt, #pluswpis:hover .plus1, #pluswpis:hover .plus2{
+    border-color: blue;
+}
+#pluswpis:hover #dodwpis{
+    color: blue;
+}

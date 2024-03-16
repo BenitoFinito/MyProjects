@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Well, I can tell you a story about this. </string>
+    <string name="b">A few weeks ago, I was late to Farmers' Market.</string>
+    <string name="c">As I parked my car, I received a text message. </string>
+    <string name="d">I took my eggs out of the car and was walking toward the building when I
+        thought to look at it. </string>
+    <string name="e">The text was from the guy who runs the market, and it said, "Are you close?" I
+        stopped walking and from the sidewalk in front of the building, sent a reply: "You might say
+        that." I saw the message had been sent, so I put my phone back in my pocket, and went
+        inside.</string>
+    <string name="f"> The guy was in the middle of reading my text when I walked in: he looked up
+        and said, "You sent this from the parking lot!" I said, "Technically, it was the sidewalk."</string>
+</resources>

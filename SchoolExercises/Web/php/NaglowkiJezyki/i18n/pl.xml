@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Cóż, mogę opowiedzieć ci historię na ten temat. </string>
+    <string name="b">Kilka tygodni temu spóźniłem się na Farmers' Market.</string>
+    <string name="c">Kiedy zaparkowałem samochód, otrzymałem wiadomość tekstową. </string>
+    <string name="d">Wyjęłam jajka z samochodu i szłam w kierunku budynku, kiedy pomyślałam, żeby na
+        nie spojrzeć. </string>
+    <string name="e">Sms był od faceta, który prowadzi market i brzmiał: "Jesteś blisko?".
+        Przestałem iść i z chodnika przed budynkiem wysłałem odpowiedź: "Można tak powiedzieć".
+        Zobaczyłem, że wiadomość została wysłana, więc włożyłem telefon z powrotem do kieszeni i
+        wszedłem do środka.</string>
+    <string name="f"> Facet był w trakcie czytania mojego SMS-a, kiedy wszedłem: spojrzał w górę i
+        powiedział: "Wysłałeś to z parkingu!". Odpowiedziałem: "Technicznie rzecz biorąc, to był
+        chodnik."</string>
+</resources>

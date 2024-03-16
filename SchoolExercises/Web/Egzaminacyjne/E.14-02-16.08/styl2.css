@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+}
+h1{
+    margin: 0;
+}
+a {
+  color: white;
+}
+img {
+  padding: 15px;
+  margin: 20px;
+  border: 2px dotted #1e9880;
+}
+table {
+  margin: 20px;
+  border: 1px solid;
+  width: 80%;
+}
+tr:hover {
+  background-color: green;
+  color: white;
+}
+th {
+  background-color: #1e9880;
+  border: 1px solid;
+}
+td {
+  border: 1px solid;
+  text-align: right;
+}
+.baner {
+  background-color: #08826a;
+  height: 60px;
+  font-family: Verdana;
+  text-align: center;
+}
+.left-panel {
+  background-color: #1e9880;
+  height: 550px;
+  width: 30%;
+  float: left;
+}
+.right-panel {
+  background-color: #9ac8bf;
+  height: 550px;
+  width: 70%;
+  float: left;
+  text-align: center;
+}
+footer {
+  background-color: #08826a;
+  font-family: Verdana;
+  color: white;
+  text-align: right;
+}

@@ -1,0 +1,75 @@
+<html>
+<head>
+</head>
+<body>
+
+<script>
+function f(){
+let text = "<p>Nazwa kodowa przeglądarki: " + navigator.appCodeName + "</p>" +
+"<p>Nazwa: " + navigator.appName + "</p>" +
+"<p>Wersja: " + navigator.appVersion + "</p>" +
+"<p>Są ciasteczka: " + navigator.cookieEnabled + "</p>" +
+"<p>Język: " + navigator.language + "</p>" +
+"<p>Silnik: " + navigator.product + "</p>" +
+"<p>Czy online: " + navigator.onLine + "</p>" +
+"<p>Platforma: " + navigator.platform + "</p>" +
+"<p>Informacje o przeglądarce (userAgent): " + navigator.userAgent + "</p>" +
+"<p>Jest java: " + navigator.javaEnabled() + "</p>" +
+"<p>Rozdzielczość ekranu: " + window.screen.width + "x" + window.screen.height + "</p>" + 
+"<p>Jest java: " + navigator.javaEnabled() + "</p>";
+navigator.geolocation.getCurrentPosition(showPosition);
+document.getElementById("d1").innerHTML = text;
+function showPosition(position){
+document.getElementById("demo").innerHTML =
+  "Geolokacja:<br>Szerokość: " + position.coords.latitude + "<br>" +
+  "Długość: " + position.coords.longitude;
+  }
+}
+
+function d(){
+var data = new Date();
+var isoDate = data.toISOString();
+document.getElementById("dataiso").innerHTML = "Data w formacie ISO:<br>" + isoDate;
+document.getElementById("data").innerHTML = "Data zwykła:<>" + data;
+}
+
+function Open(){
+  myWindow = window.open("", "", "width=200, height=200");
+}
+function Up(){
+  myWindow.moveBy(0, -25);
+}
+function Left(){
+  myWindow.moveBy(-25,0);
+}
+function Down(){
+  myWindow.moveBy(0,25);
+}
+function Right(){
+  myWindow.moveBy(25,0);
+}
+function Close(){
+  myWindow.close();
+}
+function Center() {
+  var left = screen.availWidth / 2 - myWindow.outerWidth / 2;
+  var top = screen.availHeight / 2 - myWindow.outerHeight / 2;
+
+  myWindow.moveTo(left, top);
+}
+</script>
+<div id="d1"></div>
+<p id="demo"></p>
+<p id="data"></p>
+<p id="dataiso"></p>
+<input type="button" onClick="Open()" value="Otwórz okno"><br>
+<input type="button" style="margin-left: 10%;" onClick="Up()" value="Przesuń w górę"><br>
+<input type="button" onClick="Left()" value="Przesuń w lewo">
+<input type="button" onClick="Down()" value="Przesuń w dół">
+<input type="button" onClick="Right()" value="Przesuń w prawo"><br>
+<input type="button" onClick="Center()" value="Centruj okno"><br>
+<input type="button" onClick="Close()" value="Zamknij okno"><br>
+<input type="button" value="Informacje" onClick="f()"><br>
+<input type="button" value="Daty" onClick="d()"><br>
+</body>
+</html>

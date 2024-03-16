@@ -1,0 +1,8 @@
+Zapytanie 1:
+INSERT INTO wychowawca VALUES(5,"Maciej","Stasiak",5);
+Zapytanie 2:
+SELECT imie, nazwisko FROM `uczen` WHERE id_klasy = 3;
+Zapytanie 3:
+CREATE USER 'K_Pietkiewicz'@'localhost' IDENTIFIED BY 'kp_123';
+Zapytanie 4:
+GRANT SELECT, INSERT ON uczen TO 'K_Pietkiewicz'@'localhost';

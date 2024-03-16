@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+<style>
+    body {
+        margin: 0;
+        background-color: darkblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        color: white;
+    }
+
+    .panel {
+        position: relative;
+        height: 100vh;
+    }
+
+    .edycji {
+        position: absolute;
+        top: 8%;
+        right: -45px;
+        height: 80%;
+        width: 250px;
+        background-color: #f0f0f0;
+        color: black;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        transition: right 0.3s;
+        overflow: hidden;
+        padding-top: 20px;
+        padding-left: 30px;
+        padding-right: 45px;
+    }
+
+    .panel:hover .edycji {
+        right: -325px;
+        overflow: auto;
+    }
+</style>
+
+<body id="tlo">
+    <div class="panel">
+        <div class="edycji">
+            Wybierz element: <br>
+            <select id="wybor">
+                <option value="tlo">Tło strony</option>
+                <option value="glower">Nagłówek 1</option>
+                <option value="glower1">Nagłówek 2</option>
+                <option value="main">Treść</option>
+                <option value="stopker">Stopka</option>
+            </select><br>
+            Kolor tła: <br>
+            R:<input type="range" id="R" name="R" min="0" max="255"><br>
+            G:<input type="range" id="G" name="G" min="0" max="255"><br>
+            B:<input type="range" id="B" name="B" min="0" max="255"><br>
+            <label>Kolor tekstu: <input type="color" id="coltext"></label><br>
+            Wielkość liter:
+            <select id="wielkosc">
+                <option value="8px">8px</option>
+                <option value="9px">9px</option>
+                <option value="10px">10px</option>
+                <option value="11px">11px</option>
+                <option value="12px">12px</option>
+                <option value="13px">13px</option>
+                <option value="14px">14px</option>
+                <option value="15px">15px</option>
+                <option value="16px">16px</option>
+                <option value="17px">17px</option>
+                <option value="18px">18px</option>
+                <option value="19px">19px</option>
+                <option value="20px">20px</option>
+                <option value="21px">21px</option>
+                <option value="22px">22px</option>
+                <option value="23px">23px</option>
+                <option value="24px">24px</option>
+                <option value="25px">25px</option>
+                <option value="30px">30px</option>
+                <option value="35px">35px</option>
+                <option value="40px">40px</option>
+                <option value="45px">45px</option>
+                <option value="50px">50px</option>
+                <option value="55px">55px</option>
+                <option value="60px">60px</option>
+            </select><br>
+            Obramowanie:
+            <select id="border">
+                <option value="none">Brak</option>
+                <option value="dotted">Kropkowane</option>
+                <option value="dashed">Liniowe przerywane</option>
+                <option value="solid">Liniowe ciągłe</option>
+                <option value="double">Podwójne</option>
+            </select>
+            Wielkość obramowania: <br>
+            1px<input type="range" id="bwiel" min="1" max="10">10px<br>
+            <input type="button" value="Pobierz kolory" id="alertkol">
+        </div>
+    </div>
+    <div style="margin: 0 auto; width: 700px; text-align:center;">
+        <header
+            style="background-color: purple; height: 70px; border-radius: 50px; font-size: 60px; line-height: 70px; margin-bottom: 10px;"
+            id="glower">
+            Garnek
+        </header>
+        <header style="background-color: green; height: 70px; font-size: 60px; line-height: 70px;" id="glower1"> Jak
+            gotować przyszłość</header>
+        <div style="background-color: gray; height: 400px; overflow: auto;" id="main">
+            Starania o zrównoważony rozwój można sprowadzić do postulatu sprawiedliwości międzypokoleniowej. Skoro my
+            możemy korzystać z przyrody taką, jaka jest dziś, to samo prawo powinno przysługiwać naszym dzieciom,
+            wnukom, wnuczkom, ich dzieciom i tak dalej. Ergo nasz rozwój nie może odbywać się kosztem przyrody. Termin
+            ‘zrównoważony’ trudno uznać w tej sytuacji za intuicyjnie zrozumiały, ale ktoś tak wymyślił kilkanaście lat
+            temu i teraz trzeba się go trzymać nie chcąc popaść w lingwistyczno-definicyjne dywagacje. Które oczywiście
+            świetnie nadają się na kolejny tekst. Ale ten jest o czymś innym.
+        </div>
+        <footer style="background-color: violet; height: 70px; border-radius: 0px 0px 50px 50px; line-height: 70px;"
+            id="stopker">
+            Autor: NoBodyNose
+        </footer>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var R = document.getElementById("R");
+            var G = document.getElementById("G");
+            var B = document.getElementById("B");
+            var wybor = document.getElementById("wybor");
+            var coltext = document.getElementById("coltext");
+            var wielkosc = document.getElementById("wielkosc");
+            var border = document.getElementById("border");
+            var bwiel = document.getElementById("bwiel");
+            var alertkol = document.getElementById("alertkol");
+            if (wybor.value == "tlo") {
+                coltext.disabled = true;
+                wielkosc.disabled = true;
+                border.disabled = true;
+                bwiel.disabled = true;
+            } else {
+                coltext.disabled = false;
+                wielkosc.disabled = false;
+                border.disabled = false;
+                bwiel.disabled = false;
+            }
+
+            R.addEventListener("input", aTlo);
+            G.addEventListener("input", aTlo);
+            B.addEventListener("input", aTlo);
+
+
+            function aTlo() {
+                var r = R.value;
+                var g = G.value;
+                var b = B.value;
+                var elem = wybor.value;
+                var wyb_elem = document.getElementById(elem);
+
+                if (wyb_elem) {
+                    wyb_elem.style.backgroundColor = "rgb(" + r + ", " + g + ", " + b + ")";
+                }
+
+            }
+            coltext.addEventListener("input", function () {
+                var ctext = coltext.value;
+                var elem = wybor.value;
+                var wyb_elem = document.getElementById(elem);
+
+                if (wyb_elem) {
+                    wyb_elem.style.color = ctext;
+                }
+            });
+            wielkosc.addEventListener("change", function () {
+                var txtSize = wielkosc.value;
+                var elem = wybor.value;
+                var wyb_elem = document.getElementById(elem);
+
+                if (wyb_elem) {
+                    wyb_elem.style.fontSize = txtSize;
+                }
+            });
+            border.addEventListener("change", function () {
+                var bStyle = border.value;
+                var elem = wybor.value;
+                var wyb_elem = document.getElementById(elem);
+                if (border.value == "none") {
+                    bwiel.disabled = true;
+                } else {
+                    bwiel.disabled = false;
+                }
+                if (wyb_elem) {
+                    wyb_elem.style.borderStyle = bStyle;
+                }
+            });
+            bwiel.addEventListener("input", function () {
+                var borderWiel = bwiel.value;
+                var elem = wybor.value;
+                var wyb_elem = document.getElementById(elem);
+
+                if (wyb_elem) {
+                    wyb_elem.style.borderWidth = borderWiel + "px";
+                }
+            });
+            alertkol.addEventListener("click", function () {
+                var bgcolor = getComputedStyle(document.getElementById("tlo")).backgroundColor;
+                var hdcolor = getComputedStyle(document.getElementById("glower")).backgroundColor;
+                var hd2color = getComputedStyle(document.getElementById("glower1")).backgroundColor;
+                var tsccolor = getComputedStyle(document.getElementById("main")).backgroundColor;
+                var ftcolor = getComputedStyle(document.getElementById("stopker")).backgroundColor;
+
+                alert("Kolory:\n Tła strony: " + bgcolor + "\nNagłówka 1.: " + hdcolor + "\nNagłówka 2.:" + hd2color + "\nGłównej sekcji: " + tsccolor + "\nStopki: " + ftcolor);
+            });
+            wybor.addEventListener("change", function () {
+                var elem = wybor.value;
+                var wyb_elem = document.getElementById(elem);
+                var coltext = document.getElementById("coltext");
+                if (wybor.value == "tlo") {
+                    coltext.disabled = true;
+                    wielkosc.disabled = true;
+                    border.disabled = true;
+                    bwiel.disabled = true;
+                } else {
+                    coltext.disabled = false;
+                    wielkosc.disabled = false;
+                    border.disabled = false;
+                    bwiel.disabled = false;
+                }
+                if (wyb_elem) {
+                    var backgroundColor = getComputedStyle(wyb_elem).backgroundColor;
+                    var textColor = getComputedStyle(wyb_elem).color;
+                    var borderStyle = getComputedStyle(wyb_elem).borderStyle;
+                    var wielkoscStyle = getComputedStyle(wyb_elem).fontSize;
+                    var bWielkosc = getComputedStyle(wyb_elem).borderWidth;
+                    var rgb = backgroundColor.match(/\d+/g);
+                    var txt = textColor.match(/\d+/g);
+                    border.value = borderStyle;
+                    wielkosc.value = wielkoscStyle;
+                    bWielkosc = bWielkosc.replace("px", "");
+                    bwiel.value = bWielkosc;
+                    if (borderStyle == "none") {
+                        bwiel.disabled = true;
+                    } else {
+                        bwiel.disabled = false;
+                    }
+                    if (rgb) {
+                        R.value = rgb[0];
+                        G.value = rgb[1];
+                        B.value = rgb[2];
+
+                    }
+                    if (txt) {
+                        var tc1 = parseInt(txt[0], 10);
+                        var hex1 = tc1.toString(16);
+                        var tc2 = parseInt(txt[1], 10);
+                        var hex2 = tc2.toString(16);
+                        var tc3 = parseInt(txt[2], 10);
+                        var hex3 = tc3.toString(16);
+                        coltext.value = "#" + hex1 + hex2 + hex3;
+                    }
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,190 @@
+.z1 {
+	border: 1px solid blue;
+	text-align: center;
+	color: red;
+	margin-bottom: 50px;
+}
+
+.z2{
+	border-bottom: 2px solid blue;
+	border-top: 2px solid blue;
+	border-left: 10px solid blue;
+	border-right: 10px solid blue;
+	text-align: center;
+	color: red;
+	width: 50%;
+	font-weight: bold;
+	font-size: 19px;
+	margin-bottom: 50px;
+	}
+	
+.z3{
+	border-bottom: 3px solid blue;
+	border-top: 3px solid red;
+	border-left: 3px solid pink;
+	border-right: 3px solid lightgreen;
+	background-color: black;
+	text-align: center;
+	color: white;
+	width: 75%;
+	text-decoration: underline;
+	font-style: italic;
+	margin-bottom: 50px;
+	}
+	
+.z4{
+	border: 5px dotted black;
+	background-image: url('2.gif');
+	text-align: right;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 20px;
+	width: 300px;
+	padding-left: 100px;
+	padding-top: 50px;
+	padding-right: 50px;
+	padding-bottom: 150px;
+	margin-bottom: 50px;
+}
+
+.z5{
+	background-image: url('4.gif');
+	margin-bottom: 50px;
+	background-size: 40px 40px;
+	background-position: top;
+	text-align: right;
+}
+
+.z6{
+	background-color: lightgray;
+	border: 3px solid gray;
+	text-align: center;
+	padding-left: 30px;
+	padding-top: 40px;
+	padding-right: 30px;
+	padding-bottom: 40px;
+	width: 400px;
+	background-image: url('1.gif');
+	background-repeat: no-repeat;
+	background-size: 100px 100px;
+	background-position: bottom left;
+	margin-left: 50px;
+	margin-bottom: 50px;
+}
+
+.z6 .w1{
+	font-style: italic;
+	font-weight: bold;
+	font-size: 19px;
+	margin-bottom: 3px;
+}
+
+.z6 .w2{
+	font-size: 10px;
+}
+
+.z7{
+	border: 2px solid black;
+	font-size: 11px;
+	margin-bottom: 50px;
+}
+
+.z7 .w1{
+	border: 2px solid red;
+	margin: 2px;
+	padding: 2px;
+}
+
+.z7 .w2{
+	border: 2px solid blue;
+	margin: 2px;
+	padding: 2px;
+}
+
+.z8{
+	width: 300px;
+	margin: 0 auto;
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+.z8 .w1{
+	width: 250px;
+	border: 2px solid black;
+	background-color: red;
+	color: white;
+	font-size: 12px;
+	margin: 0 auto;
+}
+
+.z8 .w2{
+	width: 150px;
+	border-bottom: 2px solid black;
+	border-left: 2px solid black;
+	border-right: 2px solid black;
+	margin: 0 auto;
+	background-color: red;
+	color: lightgreen;
+	font-size: 12px;
+}
+
+.z9{
+	border: 2px dashed black;
+	width: 410px;
+	height: 125px;
+	margin: 0 auto;
+	text-align: right;
+	border-radius: 10px;
+	background-image: url('grumpy.jpg');
+	background-repeat: no-repeat;
+	background-size: 105px 125px;
+	background-position: top left;
+	font-size: 19px;
+	margin-bottom: 50px;
+	Box-sizing: border-box;
+	Font-family:Comic Sans MS;
+}
+
+
+
+.z9 .w1{
+	padding-right: 10px;
+}
+
+.z9 .w2{
+	padding-right: 80px;
+}
+
+.z10{
+	border-radius: 5px;
+	background-color: pink;
+	width: 630px;
+	height: 200px;
+	margin: 0 auto;
+	box-sizing: border-box;
+	background-position: left;
+	background-size: 150px 200px;
+	background-image: url('5.gif');
+	background-repeat: no-repeat;
+	text-align: left;
+	padding-left: 170px;
+	padding-top: 10px;
+	letter-spacing: 4px;
+	font-size: 15px;
+	
+}
+
+.z10 .w1{
+		Text-transform: uppercase;
+		font-weight: bold;
+		font-style: italic;
+		padding-bottom: 10px;
+		background-image: url('3.gif');
+		background-repeat: no-repeat;
+		background-position: top right;
+		background-size: 35px 25px;
+}
+
+.z10 .w2{
+	font-size: 12px;
+}

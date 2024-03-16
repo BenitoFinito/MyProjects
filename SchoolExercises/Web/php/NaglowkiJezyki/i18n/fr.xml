@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a">Et bien, je peux vous raconter une histoire à ce sujet. </string>
+    <string name="b">Il y a quelques semaines, j'étais en retard au marché de la ferme.</string>
+    <string name="c">Alors que je garais ma voiture, j'ai reçu un SMS. </string>
+    <string name="d">J'ai sorti mes oeufs de la voiture et je me dirigeais vers le bâtiment quand
+        j'ai pensé à le regarder. </string>
+    <string name="e">Le texto venait du gars qui tient le marché, et il disait : "Vous êtes près ?".
+        Je me suis arrêté de marcher et depuis le trottoir devant l'immeuble, j'ai envoyé une
+        réponse : "On peut dire ça". J'ai vu que le message avait été envoyé, alors j'ai remis mon
+        téléphone dans ma poche, et je suis entré.</string>
+    <string name="f"> Le type était en train de lire mon texto quand je suis entré : il a levé la
+        tête et m'a dit : "Tu as envoyé ça depuis le parking !". J'ai répondu : "Techniquement,
+        c'était le trottoir."</string>
+</resources>

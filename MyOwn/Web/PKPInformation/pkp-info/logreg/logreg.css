@@ -1,0 +1,211 @@
+body{
+    font-family:sans-serif;
+    background: linear-gradient(to bottom right, blue , whitesmoke 50%, darkgreen);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+header{
+    width: 85%;
+    height: 150px;
+    background-image: linear-gradient(blueviolet, green);
+    border: 5px solid black;
+    border-radius: 20px;
+    color: white;
+    margin: auto;
+    margin-bottom: 10px;
+    position: relative;
+}
+h2{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+img{
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 300px;
+    max-height: 80px;
+    text-align: center;
+    line-height: 80px;
+}
+#reglogblock{
+    width: 610px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+#logblock{
+    height: 70px;
+    line-height: 70px;
+    width:200px;
+    border: 5px black solid;
+    border-radius: 20px;
+    margin: auto;
+    text-align: center;
+    color: whitesmoke;
+    font-size: 20px;
+    font-weight: 700;
+    background-image: linear-gradient(blueviolet, green);
+    margin-bottom: 10px;
+    float: left;
+}
+#regblock{
+    height: 70px;
+    line-height: 70px;
+    width:200px;
+    border: 5px black solid;
+    border-radius: 20px;
+    margin: auto;
+    text-align: center;
+    color: whitesmoke;
+    font-size: 20px;
+    font-weight: 700;
+    background-image: linear-gradient(blueviolet, green);
+    margin-bottom: 10px;
+}
+#loginreg{
+    height: 300px;
+    width: 600px;
+    background-image: linear-gradient(blueviolet, green);
+    font-weight: bold;
+    text-align: center;
+    border: solid black 5px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+#logo{
+    height: 260px;
+    width: 298px;
+    float: left;
+    border-right: solid white 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#login,#login1{
+    width: 200px;
+    border: solid black 2px;
+    border-radius: 10px;
+    padding-left: 7px;
+    padding-right: 7px;
+    background-color: rgb(173, 255, 255);
+    transition: background-color 0.7s ease;
+    text-align: center;
+}
+#login1,#passwd1{
+    margin-bottom: 5px;
+}
+#login,#passwd{
+    margin-bottom: 15px;
+}
+#login:hover,#login:focus,#passwd:hover, #passwd:focus, #login1:hover,#login1:focus,#passwd1:hover, #passwd1:focus{
+    background-color: white;
+}
+#passwd,#passwd1{
+    width: 200px;
+    border: solid black 2px;
+    border-radius: 10px;
+    padding-left: 7px;
+    padding-right: 7px;
+    background-color: rgb(173, 255, 255);
+    transition: background-color 0.7s ease;
+    text-align: center;
+}
+#logbutt{
+    margin-top: 15px;
+    width: 90px;
+    height: 40px;
+    border: solid black 3px;
+    border-radius: 10px;
+    background-color: blue;
+    color: whitesmoke;
+    transition: all 0.3s ease;
+    font-weight:bold;
+}
+#logbutt:active{
+    background-color: cyan;
+    color:black;
+}
+#sec_log{
+    color:whitesmoke;
+}
+#reg{
+    height: 260px;
+    width: 298px;
+    border-left: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#regbutt{
+    margin-top: 10px;
+    margin-bottom: 19px;
+    width: 110px;
+    height: 40px;
+    border: solid black 3px;
+    border-radius: 10px;
+    background-color: purple;
+    color: whitesmoke;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+#regbutt:active{
+    background-color: palevioletred;
+    color:black;
+}
+#sec_reg{
+    color:whitesmoke;
+}
+#sucq{
+    font-size: 15px; 
+    position: absolute; 
+    margin-top: 250px; 
+    color: whitesmoke;
+}
+#gosc{
+    width: 600px;
+    height: 50px;
+    background-image: linear-gradient(blueviolet, green);
+    border: solid black 5px;
+    border-radius: 20px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+}
+a{
+    font-weight: bold;
+    color: cyan;
+}
+a:active{
+    color: red;
+}
+#error{
+    position: absolute;
+    top: 50%;
+    right: 18%;
+    transform: translate(50%, -50%);
+    height: 45px;
+    width: 350px;
+    background: linear-gradient(orangered, gold);
+    font-weight: bold;
+    text-align: center;
+    border: solid red 5px;
+    border-radius: 20px;
+    color: white;
+    margin: auto;
+    font-size: 15px;
+    padding-top: 5px;
+}

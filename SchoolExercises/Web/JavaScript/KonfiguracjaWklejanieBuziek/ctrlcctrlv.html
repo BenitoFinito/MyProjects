@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ctrl+c Ctrl+v</title>
+</head>
+<style>
+    .images {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .images img:hover {
+        opacity: 0.5;
+        cursor: pointer;
+    }
+
+    .images img:active {
+        opacity: 1;
+    }
+
+    body #canvas {
+        display: inline-block;
+        border: 1px black solid;
+    }
+
+    body {
+        text-align: center;
+        margin: 0;
+    }
+
+    .panel {
+        position: relative;
+        height: 500px;
+        float: left;
+    }
+
+    .edycji {
+        position: absolute;
+        top: 5%;
+        right: -30px;
+        height: 85%;
+        width: 200px;
+        background-color: #f0f0f0;
+        color: black;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        transition: right 0.3s;
+        overflow: hidden;
+        padding-top: 20px;
+        padding-left: 15px;
+        padding-right: 35px;
+    }
+
+    .panel:hover .edycji {
+        right: -250px;
+    }
+
+    #cpan {
+        border: 1px solid black;
+        background-color: white;
+    }
+</style>
+
+<body>
+    <div class="images">
+        <img src="images/buzka1.PNG" alt="buzka1" value="1" onclick="funkcja(this)">
+        <img src="images/buzka2.PNG" alt="buzka2" value="2" onclick="funkcja(this)">
+        <img src="images/buzka3.PNG" alt="buzka3" value="3" onclick="funkcja(this)">
+        <img src="images/buzka4.PNG" alt="buzka4" value="4" onclick="funkcja(this)">
+        <img src="images/buzka5.PNG" alt="buzka5" value="5" onclick="funkcja(this)">
+    </div>
+    <div class="panel">
+        <div class="edycji">
+            <canvas id="cpan" width="200" height="200">
+                Nie wspiera przegladarka canvas.
+            </canvas>
+            Kolor emotki: <br>
+            R:<input type="range" id="ER" name="ER" min="0" max="255" value="0"><br>
+            G:<input type="range" id="EG" name="EG" min="0" max="255" value="0"><br>
+            B:<input type="range" id="EB" name="EB" min="0" max="255" value="0"><br>
+            Rozmiar emotki: <br>
+            10<input type="range" id="ES" min="10" max="100" step="10" value="50" oninput="updateSize()">100<br>
+            <button onclick="zobaczZmiany()">Zobacz zmiany</button><br>
+            <button onclick="useEmote()">Użyj buźki</button><br>
+            <button onclick="czyscCanvas()">Wyczyść Canvas</button>
+        </div>
+    </div>
+    <canvas id="canvas" onclick="rysujNaCanvas()" width="900" height="600">
+        Nie wspiera przegladarka canvas.
+    </canvas>
+</body>
+<script>
+    var canvasElement = document.getElementById("canvas");
+    var c = canvasElement.getContext('2d');
+    var x, y;
+    var buzka = null;
+
+    var panelcanvas = document.getElementById("cpan");
+    var pc = panelcanvas.getContext('2d');
+
+    var R = document.getElementById("ER");
+    var G = document.getElementById("EG");
+    var B = document.getElementById("EB");
+    var size = document.getElementById("ES").value;
+
+    zobaczZmiany();
+
+    function updateSize() {
+        size = document.getElementById("ES").value;
+    }
+    function getColor(tc) {
+        var r = R.value;
+        var g = G.value;
+        var b = B.value;
+        tc.strokeStyle = 'rgba(' + r + ',' + g + ',' + b + ')';
+    }
+    function zobaczZmiany() {
+        pc.clearRect(0, 0, panelcanvas.width, panelcanvas.height);
+        getColor(pc);
+        pc.beginPath();
+        pc.arc(100, 100, size, 0, Math.PI * 2, true);
+        pc.moveTo(100 + size / 2, 100 + size / 10);
+        pc.arc(100, 100 + size / 10, size / 2, 0, Math.PI, false);
+        pc.moveTo(100 + size / 2 - size / 50, 100 + size / 5 + size / 25);
+        pc.arc(100 + size / 2.5, 100 + size / 2.5, size / 6.25, Math.PI * 1.8, Math.PI * 3 / 4, false);
+        pc.moveTo(100 - size / 5, 100 - size / 5);
+        pc.arc(100 - size / 5 - size / 10, 100 - size / 5, size / 10, 0, Math.PI * 2, true);
+        pc.moveTo(100 + size / 2.5, 100 - size / 5);
+        pc.arc(100 + size / 2.5 - size / 10, 100 - size / 5, size / 10, 0, Math.PI * 2, true);
+        pc.stroke();
+    }
+
+    function funkcja(image) {
+        buzka = image.getAttribute("value");
+        buzka = parseInt(buzka);
+    }
+
+    function useEmote() {
+        buzka = 6;
+    }
+    function czyscCanvas(){
+        c.clearRect(0, 0, canvasElement.width, canvasElement.height);
+    }
+    function rysujNaCanvas(e) {
+        x = e.clientX - canvasElement.getBoundingClientRect().left;
+        y = e.clientY - canvasElement.getBoundingClientRect().top;
+
+        if (buzka != null) {
+            switch (buzka) {
+                case 1:
+                    buzka1();
+                    break;
+                case 2:
+                    buzka2();
+                    break;
+                case 3:
+                    buzka3();
+                    break;
+                case 4:
+                    buzka4();
+                    break;
+                case 5:
+                    buzka5();
+                    break;
+                case 6:
+                    buzka6();
+                    break;
+            }
+        }
+
+    }
+
+    function pozycjaMyszki(e) {
+
+        if (!e) var e = window.event;
+        if (e.pageX || e.pageY) {
+            pozX = e.pageX;
+            pozY = e.pageY;
+        } else if (e.clientX || e.clientY) {
+            pozX = e.clientX + document.body.scrollLeft;
+            pozY = e.clientY + document.body.scrollTop;
+        }
+        pozX = pozX - ((screen.width - 500) / 2);
+
+        x = pozX;
+        y = pozY;
+
+        return { pozX, pozY }
+    }
+
+    function buzka1() {
+        c.strokeStyle = 'rgba(0, 0, 0)';
+        c.beginPath();
+        c.arc(x, y, 50, 0, Math.PI * 2, true); // Outer circle
+        c.moveTo(x + 25, y + 35);
+        c.arc(x, y + 35, 25, 0, Math.PI, true); // Mouth (clockwise)
+        c.moveTo(x - 10, y - 10);
+        c.arc(x - 15, y - 10, 5, 0, Math.PI * 2, true); // Left eye
+        c.moveTo(x + 20, y - 10);
+        c.arc(x + 15, y - 10, 5, 0, Math.PI * 2, true); // Right eye
+        c.stroke();
+    }
+    function buzka2() {
+        c.strokeStyle = 'rgba(0, 0, 0)';
+        c.beginPath();
+        c.arc(x, y, 50, 0, Math.PI * 2, true);
+        c.moveTo(x - 35, y);
+        c.arc(x, y, 35, 0, Math.PI, false);
+        c.moveTo(x - 20, y - 10);
+        c.arc(x - 25, y - 10, 5, 0, Math.PI * 2, true);
+        c.moveTo(x + 30, y - 10);
+        c.arc(x + 25, y - 10, 5, 0, Math.PI * 2, true);
+        c.stroke();
+    }
+    function buzka3() {
+        c.strokeStyle = 'rgba(0, 0, 0)';
+        c.beginPath();
+        c.arc(x, y, 50, 0, Math.PI * 2, true);
+        c.moveTo(x - 25, y + 10);
+        c.lineTo(x + 25, y + 10);
+        c.moveTo(x - 20, y - 10);
+        c.arc(x - 25, y - 10, 5, 0, Math.PI * 2, true);
+        c.moveTo(x + 30, y - 10);
+        c.arc(x + 25, y - 10, 5, 0, Math.PI * 2, true);
+        c.moveTo(x - 35, y - 20);
+        c.lineTo(x - 15, y - 20);
+        c.moveTo(x + 15, y - 30);
+        c.lineTo(x + 35, y - 30);
+        c.stroke();
+    }
+    function buzka4() {
+        c.strokeStyle = 'rgba(0, 0, 0)';
+        c.beginPath();
+        c.arc(x, y, 50, 0, Math.PI * 2, true);
+        c.moveTo(x + 35, y);
+        c.arc(x, y, 35, 0, Math.PI, false);
+        c.moveTo(x - 15, y - 10);
+        c.lineTo(x - 30, y - 10);
+        c.moveTo(x + 30, y - 10);
+        c.arc(x + 25, y - 10, 5, 0, Math.PI * 2, true);
+        c.stroke();
+    }
+    function buzka5() {
+        c.strokeStyle = 'rgba(0, 0, 0)';
+        c.beginPath();
+        c.arc(x, y, 50, 0, Math.PI * 2, true);
+        c.moveTo(x - 25, y + 20);
+        c.lineTo(x + 25, y + 20);
+        c.moveTo(x - 30, y);
+        c.arc(x - 35, y, 5, 0, Math.PI * 2, true);
+        c.moveTo(x + 40, y);
+        c.arc(x + 35, y, 5, 0, Math.PI * 2, true);
+        c.stroke();
+    }
+    function buzka6(){
+        getColor(c);
+        c.beginPath();
+        c.arc(x, y, size, 0, Math.PI * 2, true);
+        c.moveTo(x + size / 2, y + size / 10);
+        c.arc(x, y + size / 10, size / 2, 0, Math.PI, false);
+        c.moveTo(x + size / 2 - size / 50, y + size / 5 + size / 25);
+        c.arc(x + size / 2.5, y + size / 2.5, size / 6.25, Math.PI * 1.8, Math.PI * 3 / 4, false);
+        c.moveTo(x - size / 5, y - size / 5);
+        c.arc(x - size / 5 - size / 10, y - size / 5, size / 10, 0, Math.PI * 2, true);
+        c.moveTo(x + size / 2.5, y - size / 5);
+        c.arc(x + size / 2.5 - size / 10, y - size / 5, size / 10, 0, Math.PI * 2, true);
+        c.stroke();
+    }
+
+    document.onmousemove = function (e) {
+        pozycjaMyszki(e);
+    }
+
+    canvasElement.onclick = function (e) {
+        rysujNaCanvas(e);
+    };
+</script>
+
+</html>

@@ -1,0 +1,55 @@
+body
+{
+	margin: 0;
+}
+.baner 
+{
+	background-color: #009999;
+	color: white;
+	height: 80px;
+	text-align: center;
+}
+.information-panel
+{
+	background-color: #009999;
+	color: white;
+	font-family: Arial;
+	height: 150px;
+	width: 25%;
+	text-align: center;
+	float: left;
+}
+.left-panel, .right-panel 
+{
+	background-color: #669999;
+	height: 600px;
+	width: 30%;
+	float: left;
+}
+.mid-panel
+{
+	background-color: #99CCCC;
+	height: 600px;
+	width: 40%;
+	text-align: center;
+	float: left;
+}
+.stopka
+{
+	background-color: #009999;
+	color: white;
+	text-align: right;
+	clear: both;
+}
+table,td
+{
+	border: 1px solid green;
+	text-align: center;
+}
+.button
+{
+	border: none;
+	margin: 10px;
+	background-color: green;
+	color: white;
+}

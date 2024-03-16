@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fabryka cukierków</title>
+    <link rel="stylesheet" type="text/css" href="styl10.css">
+</head>
+
+<body>
+    <header>
+        <section class="top1">
+            <a href="zamowienie.html" class="zamowienie">Zamów cukierki</a>
+        </section>
+        <section class="top2">
+            <a href="index.html">
+                <img src="logotyp.png" alt="Nasze logo">
+            </a>
+        </section>
+    </header>
+    <section class="baner">
+        <h1>Strefa zamówień</h1>
+    </section>
+    <section>
+        <section class="left">
+            Numer kształtu:<br>
+            <input type="number" id="ksztalt"><br>
+            skomponuj swój kolor, podaj RGB:<br>
+            R:<input type="number" id="r">
+            G:<input type="number" id="g">
+            B:<input type="number" id="b"><br>
+            <button onclick="zamow()">Zamówienie</button>
+            <p id="twoje_zamow">Twoje zamówienie</p>
+            <button id="kolor">Kolor</button>
+        </section>
+        <section class="right">
+            <h2>Nasza oferta</h2>
+            <table>
+                <tr>
+                    <td>Kształty</td>
+                    <td rowspan="2">Możesz zamówić<br>dowolny kolor cukierka</td>
+                </tr>
+                <tr>
+                    <td>
+                        <ol>
+                            <li>cytryna</li>
+                            <li>liść</li>
+                            <li>banan</li>
+                        </ol>
+                    </td>
+                </tr>
+            </table>
+        </section>
+    </section>
+    <footer>
+        Autor strony: <b>2137694202115</b>
+    </footer>
+    <script>
+        function zamow() {
+            var numer_k = document.getElementById("ksztalt");
+            var twoje_zamow = document.getElementById("twoje_zamow");
+            var tekst = "Twoje zamówienie to cukierek ";
+            switch (numer_k.value) {
+                case "1":
+                    tekst += "cytryna";
+                    break;
+                case "2":
+                    tekst += "liść";
+                    break;
+                case "3":
+                    tekst += "banan";
+                    break;
+                default:
+                    tekst += "inny";
+            }
+            twoje_zamow.innerHTML = tekst;
+            var r = document.getElementById("r");
+            var g = document.getElementById("g");
+            var b = document.getElementById("b");
+            var kolor = document.getElementById("kolor");
+            kolor.style = "background-color: rgb("+r.value+","+g.value+","+b.value+")";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <title>Canvas</title>
+</head>
+
+<body>
+
+    <canvas width="900" height="225" id="canvas" style="border: 1px black solid">
+        Nie wspiera przegladarka twoja canvas.
+    </canvas>
+</body>
+<script>
+    canvasElement = document.getElementById("canvas");
+    renderCtx = canvasElement.getContext('2d');
+
+    renderCtx.strokeStyle = 'rgba(0, 0, 0)';
+    renderCtx.beginPath();
+    renderCtx.arc(75, 75, 50, 0, Math.PI * 2, true); // Outer circle
+    renderCtx.moveTo(100, 110);
+    renderCtx.arc(75, 110, 25, 0, Math.PI, true); // Mouth (clockwise)
+    renderCtx.moveTo(65, 65);
+    renderCtx.arc(60, 65, 5, 0, Math.PI * 2, true); // Left eye
+    renderCtx.moveTo(95, 65);
+    renderCtx.arc(90, 65, 5, 0, Math.PI * 2, true); // Right eye
+    renderCtx.stroke();
+
+    renderCtx.strokeStyle = 'rgba(0, 0, 0)';
+    renderCtx.beginPath();
+    renderCtx.arc(150 + 75 + 450, 75, 50, 0, Math.PI * 2, true);
+    renderCtx.moveTo(125 + 75 + 450, 95);
+    renderCtx.lineTo(175 + 75 + 450, 95);
+    renderCtx.moveTo(120 + 75 + 450, 75);
+    renderCtx.arc(115 + 75 + 450, 75, 5, 0, Math.PI * 2, true);
+    renderCtx.moveTo(190 + 75 + 450, 75);
+    renderCtx.arc(185 + 75 + 450, 75, 5, 0, Math.PI * 2, true);
+    renderCtx.stroke();
+
+    renderCtx.strokeStyle = 'rgba(0, 0, 0)';
+    renderCtx.beginPath();
+    renderCtx.arc(225, 75, 50, 0, Math.PI * 2, true);
+    renderCtx.moveTo(190, 75);
+    renderCtx.arc(225, 75, 35, 0, Math.PI, false);
+    renderCtx.moveTo(205, 65);
+    renderCtx.arc(200, 65, 5, 0, Math.PI * 2, true);
+    renderCtx.moveTo(255, 65);
+    renderCtx.arc(250, 65, 5, 0, Math.PI * 2, true);
+    renderCtx.stroke();
+
+    renderCtx.strokeStyle = 'rgba(0, 0, 0)';
+    renderCtx.beginPath();
+    renderCtx.arc(300 + 75 + 150, 75, 50, 0, Math.PI * 2, true);
+    renderCtx.moveTo(335 + 75 + 150, 75);
+    renderCtx.arc(300 + 75 + 150, 75, 35, 0, Math.PI, false);
+    renderCtx.moveTo(285 + 75 + 150, 65);
+    renderCtx.lineTo(270 + 75 + 150, 65);
+    renderCtx.moveTo(330 + 75 + 150, 65);
+    renderCtx.arc(325 + 75 + 150, 65, 5, 0, Math.PI * 2, true);
+    renderCtx.stroke();
+
+    renderCtx.strokeStyle = 'rgba(0, 0, 0)';
+    renderCtx.beginPath();
+    renderCtx.arc(375, 75, 50, 0, Math.PI * 2, true);
+    renderCtx.moveTo(350, 85);
+    renderCtx.lineTo(400, 85);
+    renderCtx.moveTo(355, 65);
+    renderCtx.arc(350, 65, 5, 0, Math.PI * 2, true);
+    renderCtx.moveTo(405, 65);
+    renderCtx.arc(400, 65, 5, 0, Math.PI * 2, true);
+    renderCtx.moveTo(340, 55);
+    renderCtx.lineTo(360, 55);
+    renderCtx.moveTo(390, 45);
+    renderCtx.lineTo(410, 45);
+    renderCtx.stroke();
+</script>
+
+</html>

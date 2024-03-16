@@ -1,0 +1,286 @@
+body{
+    font-family:sans-serif;
+    background: linear-gradient(to bottom right, blue , whitesmoke 50%, darkgreen);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    background-attachment: fixed;
+    overflow: auto;
+}
+header{
+    width: 85%;
+    height: 150px;
+    background-image: linear-gradient(blueviolet, green);
+    border: 5px solid black;
+    border-radius: 20px;
+    color: white;
+    margin: auto;
+    margin-bottom: 20px;
+    position: relative;
+}
+h2{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#userinfo,#userinfo2{
+    width: 180px;
+    height: 40px;
+    position: absolute;
+    border: solid black 3px;
+    border-radius: 10px;
+    background-image: radial-gradient(white 50%,yellow);
+    top: 8px;
+    left: 10px;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+}
+img{
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 300px;
+    max-height: 80px;
+    text-align: center;
+    line-height: 80px;
+}
+nav{
+    width: 350px;
+    height: 40px;
+    position: absolute;
+    border: solid black 3px;
+    border-radius: 10px;
+    background-color: gainsboro;
+    top: 8px;
+    right: 10px;
+    text-align: center;
+    line-height: 40px;
+    margin: auto;
+    font-size: 16px;
+}
+a{
+margin-left: 10px;
+margin-right: 10px;
+}
+#userinfo{
+   padding-top: 8px;
+}
+#userinfo2{
+    line-height: 40px;
+}
+#log,#log2{
+    width: 75px;
+    height: 35px;
+    position: absolute;
+    left: 220px;
+    border: solid 2px black;
+    border-radius: 10px;
+    background-color: lightgrey;
+    color: darkblue;
+    font-weight:bold;
+    transition: 0.2s ease;
+}
+#log{
+    top: 17px;
+}
+#log2{
+    top: 13.5px;
+}
+#log:hover,#log2:hover{
+    background-color: slategray;
+    color: blue;
+}
+#log:active,#log2:active{
+    background-color: rgb(65, 66, 68);
+    color: cyan;
+}
+#rola1,#rola2{
+    height: 30px;
+    width: 70px;
+    color: black;
+    text-align: center;
+    line-height: 30px;
+    position: absolute;
+    border-radius: 10px;
+    border: solid black 2px;
+    top: 62px;
+    left: 66px;
+    font-weight: bold;
+}
+#rola1{
+    background-image: radial-gradient(white 50%,lime);
+}
+#rola2{
+    background-image: radial-gradient(white 50%,red);
+}
+#main{
+    width: 85%;
+    height: 100%;
+    background-color:rgba(255, 255, 255, 0.65);
+    margin: auto;
+    border: black solid 3px;
+    border-radius: 10px;
+    font-size: 50px;
+}
+#pociagi{
+    width: 100%;
+    font-size: 15px;
+}
+#info{
+    width: 90%;
+    border: solid 2px black;
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 20px;
+}
+#blok{
+    width: 33.3%;
+    height: 90%;
+    float:left;
+    text-align: center;
+}
+#stopka{
+    width:100%;
+    text-align: center;
+    clear: left;
+    border-top: solid black 2px;
+}
+#info:hover{
+    border: solid 2px teal;
+}
+#info:hover #stopka{
+    border-top: solid 2px teal;
+}
+.opoz1{
+    color:red;
+}
+.opoz2{
+    color: rgb(255, 123, 0);
+}
+.opoz3{
+    color: green;
+}
+#komentarze{
+    width: 100%;
+    font-size: 15px;
+}
+textarea{
+    width: 99%;
+    margin-left: 2px;
+    height: auto;
+    min-height: 61px;
+    resize: vertical;
+    float: left;
+    background: none;
+}
+#kom{
+    width: 80%;
+    height: 100px;
+    margin-left: 5%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#dodkom, #ankom{
+    width: 150px;
+    height: 30px;
+    border-radius: 20px;
+    border: none;
+    color: black;
+    font-weight:600;
+    float: right;
+    margin-top: 5px;
+}
+#dodkom{
+    margin-left: 10px;
+    background-color: cyan;
+}
+#ankom{
+    visibility: hidden;
+    background-color: rgb(155, 155, 155);
+}
+#ankom:hover{
+    background-color: rgb(170, 170, 170);
+}
+#ankom:active{
+    background-color: gray;
+}
+textarea:valid ~ #ankom{
+    visibility: visible;
+}
+#dodkom:hover{
+    background-color:rgb(80, 255, 255);
+}
+#dodkom:active{
+    background-color: turquoise;
+}
+#comm{
+    width: 70%;
+    margin: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-left: 10%;
+    word-wrap: break-word;
+    padding: 5px;
+    position: relative;
+}
+#comm:hover{
+    background-color: rgba(255, 255, 255, 0.50);
+}
+#deledit{
+    text-align: right;
+}
+.deledit, .danedane, .savean{
+    border:none;
+    margin-right: 10px;
+    border-radius: 10px;
+    background-color: rgb(178, 178, 178);
+}
+.deledit, .danedane{
+    visibility: hidden;
+}
+.danedane, .savean{
+    margin-bottom: 5px;
+}
+.deledit:hover, .danedane:hover, .savean:hover{
+    background-color: rgb(216, 216, 216);
+}
+.deledit:active, .danedane:active, .savean:active{
+    background-color: rgb(150, 150, 150);
+}
+#comm:hover .deledit, #info:hover .danedane{
+    visibility: visible;
+}
+#nocomm{
+    width: 50%;
+    text-align:center;
+    margin:auto;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+#error{
+    height: 45px;
+    width: 350px;
+    background: linear-gradient(orangered, gold);
+    font-weight: bold;
+    text-align: center;
+    border: solid red 5px;
+    border-radius: 20px;
+    color: white;
+    margin: auto;
+    font-size: 15px;
+    padding-top: 5px;
+    margin-top: 20px;
+}
+.time{
+    width:30px;
+}
+.time1{
+    width:60px;
+}
+.text{
+    width: 200px; 
+}

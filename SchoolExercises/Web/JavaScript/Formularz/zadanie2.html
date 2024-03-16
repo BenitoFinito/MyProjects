@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="pl">
+
+<head></head>
+
+<body id="body">
+	<style>
+		body {
+			background-image: radial-gradient(red, blue, black);
+			height: 100vh;
+			margin: 0;
+			color: white;
+		}
+	</style>
+	<script>
+		document.getElementById("body").onload = function () {
+			console.log("Strona załadowana");
+			var wyn = document.getElementById("wynik");
+			wyn.setAttribute("readonly", "true");
+			var regu = document.getElementById("regularny");
+			regu.setAttribute("checked","true");
+			document.getElementById("wymiar1").onkeyup = function () { oblicz() };
+			document.getElementById("wymiar2").onkeyup = function () { oblicz() };
+			document.getElementById("zapytanie").oninput = function () { sprawdz() };
+			document.getElementById("kat_dzialki").style.display = "none";
+			document.getElementById("liczba_odwiertow").style.display = "none";
+			wymiaryxy();
+		};
+		function oblicz() {
+			var wymiar1 = document.getElementById("wymiar1").value;
+			var wymiar2 = document.getElementById("wymiar2").value;
+			var wynik = document.getElementById("wynik");
+			var iloczyn = wymiar1 * wymiar2;
+			wynik.value = isNaN(iloczyn) ? "NaN" : iloczyn;
+			console.log(wynik);
+		}
+		function sprawdz() {
+			var zapytanie = document.getElementById("zapytanie");
+			var zaplen = zapytanie.value;
+			if (zaplen.length > 500) {
+				zapytanie.value = zaplen.slice(0, 500);
+			}
+		}
+		function kontrola() {
+			var imie = document.getElementById("imie").value;
+			var nazwisko = document.getElementById("nazwisko").value;
+			var num_tel = document.getElementById("num_tel").value;
+			var wojewodztwo = document.getElementById("wojewodztwo").value;
+			var miejscowosc = document.getElementById("miejscowosc").value;
+			var ulica = document.getElementById("ulica").value;
+			var zapytanie = document.getElementById("zapytanie").value;
+			var wymiar1 = document.getElementById("wymiar1").value;
+			var wymiar2 = document.getElementById("wymiar2").value;
+			var regularny = document.getElementById("regularny");
+			var wymog1 = /^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+$/;
+			var wymog2 = /^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+(-[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+)?$/;
+			var wymog3 = /^[0-9]+$/;
+			var wymog4 = /^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ ]+(-[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ ]+)?$/;
+			var wymog5 = /^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ 0-9]+$/;
+			var blad = "";
+			var l_bledow = 0;
+			if (imie == "") {
+				blad += "Imię nie może być puste\n";
+				l_bledow += 1;
+			} else {
+				if (!wymog1.test(imie)) {
+					blad += "Imię musi składać sie z liter (włącznie z polskimi) tylko od a-z\n";
+					l_bledow += 1;
+				}
+			}
+			if (nazwisko == "") {
+				blad += "Nazwisko nie może być puste\n";
+				l_bledow += 1;
+			} else {
+				if (!wymog2.test(nazwisko)) {
+					blad += "Nazwisko musi składać sie z liter (włącznie z polskimi) tylko od a-z oraz może zawierać myślnik\n";
+					l_bledow += 1;
+				}
+			}
+			if (num_tel == "") {
+				blad += "Numer telefonu nie może być pusty\n";
+				l_bledow += 1;
+			} else {
+				if (!wymog3.test(num_tel)) { // isNaN akceptuje znak '+' i '-'
+					blad += "Numer telefonu musi składać się tylko z cyfr bez spacji\n";
+					l_bledow += 1;
+				} else {
+					if (num_tel < 1) { //jeśli jakimś cudem uda się wpisać liczbę ujemną
+						blad += "Numer telefonu musi być liczbą dodatnią\n";
+						l_bledow += 1;
+					} else {
+						if (num_tel.length != 9) {
+							blad += "Numer telefonu musi składać się z dokładnie 9 cyfr (bez numerów kierunkowych np. +48)\n";
+							l_bledow += 1;
+						}
+					}
+				}
+			}
+			if (wojewodztwo == "") {
+				blad += "Województwo nie może być puste\n";
+				l_bledow += 1;
+			} else {
+				if (!wymog2.test(wojewodztwo)) {
+					blad += "Województwo musi składać się tylko z liter (włącznie z polskimi) tylko od a-z oraz może zawierać myślnik\n";
+					l_bledow += 1;
+				}
+			}
+			if (miejscowosc == "") {
+				blad += "Miejscowość nie może być pusta\n";
+				l_bledow += 1;
+			} else {
+				if (!wymog4.test(miejscowosc)) {
+					blad += "Miejscowość musi składać się tylko z liter (włącznie z polskimi) tylko od a-z oraz może zawierać myślnik\n";
+					l_bledow += 1;
+				}
+			}
+			if (ulica == "") {
+				blad += "Ulica nie może być pusta\n";
+				l_bledow += 1;
+			} else {
+				if (!wymog5.test(ulica)) {
+					blad += "Ulica musi składać się z liter (włącznie z polskimi) tylko od a-z oraz może zawierać cyfry od 0-9 i spację\n";
+					l_bledow += 1;
+				}
+			}
+			if (regularny.checked) {
+				if (wymiar1 == "" || wymiar2 == "") {
+					blad += "Wymiary nie mogą być puste\n";
+					l_bledow += 1;
+				} else {
+					if (isNaN(wymiar1) || isNaN(wymiar2)) {
+						blad += "Wymiary muszą być cyframi\n";
+						l_bledow += 1;
+					} else {
+						if (wymiar1 < 1 || wymiar2 < 1) {
+							blad += "Wymiary muszą być dodatnie\n";
+							l_bledow += 1;
+						}
+					}
+				}
+			}
+			if (l_bledow > 0) {
+				alert(blad);
+				return false;
+			}
+		}
+		function zmien() {
+			var pole1 = document.getElementById("pole1");
+			var pole2 = document.getElementById("pole2");
+			if (pole1.checked) {
+				document.getElementById("kat_dzialki").style.display = "block";
+			} else {
+				document.getElementById("kat_dzialki").style.display = "none";
+			}
+			if (pole2.checked) {
+				document.getElementById("liczba_odwiertow").style.display = "block";
+			} else {
+				document.getElementById("liczba_odwiertow").style.display = "none";
+			}
+		}
+		function wymiaryxy() {
+			var regularny = document.getElementById("regularny");
+			var zlozony = document.getElementById("zlozony");
+			var wymiar1 = document.getElementById("wymiar1");
+			var wymiar2 = document.getElementById("wymiar2");
+			var wynik = document.getElementById("wynik");
+
+			if (zlozony.checked) {
+				wymiar1.disabled = true;
+				wymiar2.disabled = true;
+				wynik.disabled = true;
+			} else if (regularny.checked) {
+				wymiar1.disabled = false;
+				wymiar2.disabled = false;
+				wynik.disabled = false;
+			}
+		}
+	</script>
+	<form action="wyslij.php" method="post" onSubmit="return kontrola()">
+		<label>Imię: <input type="text" id="imie"></label><br>
+		<label>Nazwisko: <input type="text" id="nazwisko"></label><br>
+		<label>Numer telefonu: <input type="text" id="num_tel"></label><br>
+		<label>Województwo: <input type="text" id="wojewodztwo"></label><br>
+		<label>Miejscowość: <input type="text" id="miejscowosc"></label><br>
+		<label>Ulica: <input type="text" id="ulica"></label><br>
+		<label for="zapytanie">Treść zapytania:</label> <br>
+		<textarea id="zapytanie" cols="40" rows="3"></textarea><br>
+		Fundament: <br>
+		<label><input type="radio" id="regularny" name="fundament" onclick="wymiaryxy()">Regularny</label><br>
+		<label><input type="radio" id="zlozony" name="fundament" onclick="wymiaryxy()">Złożony</label><br>
+		Dodatkowe opcje: <br>
+		<label><input type="checkbox" id="pole1" onclick="zmien()">Działka pochylona</label><br>
+		<input type="text" id="kat_dzialki" placeholder="Podaj kąt działki">
+		<label><input type="checkbox" id="pole2" onclick="zmien()">Szkody górnicze</label><br>
+		<input type="text" id="liczba_odwiertow" placeholder="Podaj liczbę odwiertów">
+		<label><input type="checkbox">Projekt zastępczy</label><br>
+		<label><input type="checkbox">Dodatkowe odwodnienie</label><br>
+		<label><input type="checkbox">Dodatkowe ocieplenie</label><br>
+		<label><input type="checkbox">Odwierty geologiczne</label><br>
+		Wymiary w metrach: <br>
+		<label>Szerokość: <input type="text" id="wymiar1"></label><br>
+		<label>Długość: <input type="text" id="wymiar2"></label><br>
+		Powierzchnia fundamentu w metrach kwadratowych: <input type="text" id="wynik"><br>
+		<input type="submit" value="Wyslij">
+	</form>
+</body>
+
+</html>

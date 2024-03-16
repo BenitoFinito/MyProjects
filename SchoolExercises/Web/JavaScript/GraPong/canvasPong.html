@@ -1,0 +1,195 @@
+<html>
+
+<body style="background-color: #ddd">
+	<div style="width:500px; height:400px; margin:0 auto ">
+		<canvas width="500" height="400" id="canvas">
+		</canvas>
+
+		<script>
+
+			function katToRad(kat) { return kat * Math.PI / 180; }
+
+			var kierunekPoziomo /*+1 w prawo, -1 w lewo*/, kierunekPionowo /* +1 w dol, -1 w gore*/;
+			var i, j;// pozycja pilki
+			var x, y; //x i y myszki
+			var predkoscPion = 1;
+
+			function draw() {
+				var canvas = document.getElementById('canvas');
+				if (canvas.getContext) {
+					var c = canvas.getContext('2d');
+					console.log("nigga");
+
+					c.fillStyle = "rgb(255,255,255)";
+					c.fillRect(0, 0, 500, 450);//biale tlo
+					c.strokeRect(0, 0, 500, 400);//obramowanie
+
+
+
+					//rysowanie paletki w miejscu myszki (x,y)
+					c.fillStyle = paletkaKolor;
+					c.fillRect(x - 50, 370, 100, 10);
+
+					//rysowanie kloca
+					c.fillStyle = koKolor;
+					c.fillRect(kox, koy, koszer, kowys);
+					c.strokeRect(kox, koy, koszer, kowys);
+
+					// Piłka uderza w kloca
+					if (i + 5 >= kox && i - 5 <= kox + koszer && j + 5 >= koy && j - 5 <= koy + kowys) {
+
+						var fromLeft = i < kox;
+						var fromRight = i > kox + koszer;
+						var fromTop = j < koy;
+						var fromBottom = j > koy + kowys;
+
+						if (fromLeft || fromRight) {
+							kierunekPoziomo = -kierunekPoziomo;
+						} else if (fromTop || fromBottom) {
+							kierunekPionowo = -kierunekPionowo;
+						}
+
+						/*
+						if (j >= 365 && j < 370) {
+							kierunekPionowo = -1;
+						} 
+						if (kierunekPoziomo == 1) {
+							if (i < x && i >= x - 50) {
+								kierunekPoziomo = -kierunekPoziomo;
+							}
+						} else {
+							if (i > x && i <= x + 50) {
+								kierunekPoziomo = -kierunekPoziomo;
+							}
+						}
+						*/
+
+
+						c.clearRect(kox, koy, koszer, kowys);
+						kox = Math.random() * (500 - 50);
+						koy = Math.random() * (100 - 10);
+						koKolor = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
+						c.fillStyle = koKolor;
+						c.fillRect(kox, koy, koszer, kowys);
+						c.strokeRect(kox, koy, koszer, kowys);
+					}
+
+
+
+					//rysowanie pseudopiłeczki
+					c.beginPath();
+
+					c.shadowBlur = 10;
+					c.shadowColor = "rgb(0,0,0)";
+					c.shadowOffsetX = 5;
+					c.shadowOffsetY = 5;
+
+					c.arc(i, j, 5, katToRad(0), katToRad(360), false); //rysowanie pilki w miejscu (i,j)
+					c.fillStyle = pilkaKolor;
+
+
+					//Zmiana kierunku piłki przy wykryciu kolizji
+					//zmiana kierunku poruszania sie pilki po odbiciu od sciany
+
+					// if (j >= 395) kierunekPionowo = -1;
+					/*else*/ if (j <= 5) kierunekPionowo = 1;
+					if (i >= 495) kierunekPoziomo = -1;
+					else if (i <= 5) kierunekPoziomo = 1;
+
+					//uderzanie pilki o paletke
+					var mid = i - x;
+
+					if (i >= x - 50 && i <= x + 50 && j >= 365) {
+
+						predkoscPion = 1 - Math.abs(mid / 50);
+						if (predkoscPion <= .2) predkoscPion = .2;
+						if (j >= 365 && j < 370) {
+							kierunekPionowo = -1;
+						}
+						if (kierunekPoziomo == 1) {
+							if (i < x && i >= x - 50) {
+								kierunekPoziomo = -kierunekPoziomo;
+							}
+						} else {
+							if (i > x && i <= x + 50) {
+								kierunekPoziomo = -kierunekPoziomo;
+							}
+						}
+					}
+
+
+
+					if (kierunekPoziomo == 1) i++;//pilka leci w prawo, gdy ma kierunek =1
+					else i--;//inaczej leci w lewo
+
+					if (kierunekPionowo == 1) j += predkoscPion;
+					else j -= predkoscPion;
+
+					c.fill();
+					c.closePath();
+
+					c.shadowBlur = 0;
+					c.shadowOffsetX = 0;
+					c.shadowOffsetY = 0;
+
+
+					/*Koniec*/
+					if (j >= 395) {
+						clearInterval(play);
+						c.fillStyle = "rgb(30, 200, 30)";
+						c.font = "italic bold 30px Arial";
+						c.fillText("Koniec", 200, 250);
+					}
+				}
+			}
+
+			function pong() {
+				i = Math.random() * (500 - 5) + 5;
+				document.getElementById("button").style = "display:none;"
+				j = Math.random() * (200 - 50) + 50;
+				kierunekPoziomo = Math.random() < 0.5 ? 1 : -1;
+				kierunekPionowo = Math.random() < 0.5 ? 1 : -1;
+				kox = Math.random() * (500 - 75);
+				koy = Math.random() * (100 - 20);
+				koszer = 75;
+				kowys = 20;
+				pilkaKolor = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
+				paletkaKolor = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
+				koKolor = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
+
+				play = setInterval('draw()', 1);
+			}
+
+
+			function pozycjaMyszki(e) {
+
+				if (!e) var e = window.event;
+				if (e.pageX || e.pageY) {
+					pozX = e.pageX;
+					pozY = e.pageY;
+				} else if (e.clientX || e.clientY) {
+					pozX = e.clientX + document.body.scrollLeft;
+					pozY = e.clientY + document.body.scrollTop;
+				}
+				pozX = pozX - ((screen.width - 500) / 2);
+
+				x = pozX;
+				y = pozY;
+
+				return { pozX, pozY }
+			}
+
+
+			document.onmousemove = function (e) {
+				pozycjaMyszki(e);
+			}
+		</script>
+		<button onClick="pong()" id="button">Graj</button>
+		<div id="text"></div>
+		<div id="text2"></div>
+	</div>
+
+
+</body>
+
+</html>

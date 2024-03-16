@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styl2.css" />
+    <title>Wskaźnik jakości hasła</title>
+  </head>
+  <body>
+    <div class="baner">
+      <h1>
+        <a href="index.html">Weryfikacja jakości hasła</a>
+      </h1>
+    </div>
+    <div class="left-panel">
+      <h2>Wybierz opcję</h2>
+      <ul>
+        <li><a href="sprawdz.html">Sprawdź hasło</a></li>
+        <li><a href="reguly.html">Reguły tworzenia hasła</a></li>
+      </ul>
+    </div>
+    <div class="right-panel">
+      <p>
+        Wpisz hasło: <input type="password" id="passwd" />
+        <input type="button" value="Weryfikuj" onclick="sprawdzenie()" />
+      </p>
+      <p id="result"></p>
+    </div>
+    <footer>
+      <h3>Wskaźnik jakości hasła</h3>
+      <p>Twórca strony: 2137694202115</p>
+    </footer>
+    <script>
+      function sprawdzenie() {
+        var passwd = document.getElementById("passwd").value;
+        var result = document.getElementById("result");
+        if (passwd.length == 0) {
+          result.innerHTML = '<font color="red"> HASŁO JEST PUSTE </font>';
+        } else if (passwd.length >= 4 && passwd.length <= 6) {
+          for (var i = 0; i <= passwd.length; i++) {
+            if (Number(parseInt(passwd.charAt(i)))) {
+              result.innerHTML =
+                '<font color="blue"> HASŁO JEST ŚREDNIE </font>';
+              break;
+            } else {
+              result.innerHTML =
+                '<font color="yellow"> HASŁO JEST SŁABE </font>';
+            }
+          }
+        } else if (passwd.length >= 7) {
+          for (var i = 0; i <= passwd.length; i++) {
+            if (Number(parseInt(passwd.charAt(i)))) {
+              result.innerHTML =
+                '<font color="green"> HASŁO JEST DOBRE </font>';
+              break;
+            } else {
+              result.innerHTML =
+                '<font color="yellow"> HASŁO JEST SŁABE </font>';
+            }
+          }
+        } else {
+          result.innerHTML = '<font color="yellow"> HASŁO JEST SŁABE </font>';
+        }
+      }
+    </script>
+  </body>
+</html>

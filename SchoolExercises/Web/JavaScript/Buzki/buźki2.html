@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <title>Canvas</title>
+</head>
+<body>
+    
+    <canvas width="450" height="225" id="canvas">
+        Nie wspiera przegladarka twoja canvas.
+    </canvas>
+</body>
+<script>
+    canvasElement=document.getElementById("canvas");
+	renderCtx=canvasElement.getContext('2d');
+    
+    renderCtx.strokeStyle='#e66465';
+	renderCtx.beginPath();
+    renderCtx.arc(75, 75, 50, 0, Math.PI * 2, true);
+    renderCtx.moveTo(95, 100);
+    renderCtx.arc(75, 100, 20, 0, Math.PI * 2, true);
+    renderCtx.moveTo(65, 65);
+    renderCtx.arc(60, 65, 5, 0, Math.PI * 2, true);
+    renderCtx.moveTo(95, 65);
+    renderCtx.arc(90, 65, 5, 0, Math.PI * 2, true);
+    renderCtx.stroke();
+
+    renderCtx.strokeStyle='#9198e5';
+	renderCtx.beginPath();
+    renderCtx.arc(180, 75, 50, 0, Math.PI * 2, true); 
+    renderCtx.moveTo(205, 80);
+    renderCtx.arc(180, 80, 25, 0, Math.PI , false);
+    renderCtx.moveTo(204, 87);
+    renderCtx.arc(200, 95, 8, Math.PI *1.8, Math.PI *3 / 4, false); 
+    renderCtx.moveTo(170, 65);
+    renderCtx.arc(165, 65, 5, 0, Math.PI * 2, true); 
+    renderCtx.moveTo(200, 65);
+    renderCtx.arc(195, 65, 5, 0, Math.PI * 2, true);
+    renderCtx.stroke();
+    
+
+
+</script>
+</html>

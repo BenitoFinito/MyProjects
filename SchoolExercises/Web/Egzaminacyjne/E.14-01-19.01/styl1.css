@@ -1,0 +1,46 @@
+body{
+    font-family: Helvetica;
+}
+.left-side{
+    background-color: navy;
+    color: white;
+    height: 700px;
+    width: 25%;
+    float: left;
+}
+.right-side1{
+    background-color: royalblue;
+    height: 100px;
+    width: 75%;
+    text-align: center;
+    float: left;
+}
+.right-side2{
+    background-color: steelblue;
+    height: 300px;
+    width: 75%;
+    float: left;
+}
+.right-side3{
+    background-color: royalblue;
+    height: 300px;
+    width: 75%;
+    text-align: center;
+    float: left;
+}
+footer{
+    clear:both;
+    background-color: steelblue;
+    text-align: center;
+    padding: 20px;
+}
+h1{
+    letter-spacing: 5px;
+}
+form{
+    margin: 30px;
+    line-height: 3;
+}
+form:hover{
+    background-color: deepskyblue;
+}
