@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - kloc
+  - FallDetector
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - C_Items
+  - I_Items
+  - Gracz
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: DOWNEEERR
+    uniqueID: 3620839869
+    locked: 0
+  - name: BG
+    uniqueID: 931143785
+    locked: 0
+  - name: down
+    uniqueID: 2658781467
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: "Posta\u0107"
+    uniqueID: 2089411049
+    locked: 0
