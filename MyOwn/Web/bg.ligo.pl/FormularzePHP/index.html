@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Wszystko o wszystkim</title>
+</head>
+<body>
+<h1>Logowanie:</h1>
+    <form method="post" action="login.php">
+        <label>Login: <input type="text" name="login" required></label><br>
+        <label>Hasło: <input type="password" name="passwd" required></label><br>
+        <label>Zapamiętaj mnie <input type="checkbox" name="remember"></label><br>
+        <input type="submit" name="log" value="Zaloguj">
+    </form>
+    <h1>Kalkulator:</h1>
+    <form method="post" action="koszt.php">
+        <label>Koszt benzyny: <input type="text" name="cost" pattern="[0-9]+([.][0-9]{1,2})?"> zł/l.</label><br>
+        <label>Ilość kilometrów: <input type="number" name="km" min="0"> </label>km.<br>
+        <label>Średnie spalanie: <input type="text" name="burn" pattern="[0-9]+([.][0-9]{1,2})?"> l/100km.</label><br>
+        <input type="submit" name="wyslij" value="Wyślij">
+    </form>
+    <h1>Rachunek za pizzę:</h1>
+    <form action="pizza.php" method="post">
+        <label for="odleglosc">Odległość (w km):</label>
+        <input type="number" id="odleglosc" name="odleglosc"  required><br>
+        <label for="ciepla">Dostawa ciepła:</label>
+        <input type="checkbox" id="ciepla" name="ciepla"><br>
+        <input type="submit" value="Oblicz koszt dowozu">
+    </form>
+    <h1>Ankieta:</h1>
+    <form method="post" action="wynik.php">
+        <label>Jakie samochody akceptujesz: <br>
+            <select name="lista[]" multiple size="6">
+            <optgroup label="Spalinowe samochody">
+                <option value="Audi">Audi</option>
+                <option value="Mercedes">Mercedes</option>
+                <option value="BMW">BMW</option>
+                <optgroup label="JDM-y">
+                    <option value="Toyota">Toyota</option>
+                    <option value="Nissan">Nissan</option>
+                    <option value="Honda">Honda</option>
+                </optgroup>
+            </optgroup>
+            <optgroup label="Elektryki">
+                <option value="auto1" disabled>Tesla</option>
+            </optgroup>
+        </select></label><br>
+        Jaka przekładnia: 
+        <label>Manualna <input type="radio" name="radio" value="Manualna" checked></label>
+        <label>Automatyczna <input type="radio" name="radio" value="Automatyczna"></label>
+    <label>Manualna i Automatyczna <input type="radio" name="radio" value="Manualna i Automatyczna"></label><br>
+    Jaki drogi samochód: 
+        <label>Bugatti <input type="checkbox" name="auto[0]" value="Bugatti" checked></label>
+        <label>Pagani <input type="checkbox" name="auto[1]" value="Pagani" checked></label>
+        <label>Koenigsegg <input type="checkbox" name="auto[2]" value="Koenigsegg" checked></label><br>
+        <input type="submit" name="wyslij" value="Wyślij">
+    </form>
+    <h1>Kolory:</h1>
+    <form method="post" action="kolory.php">
+        <label>Kolor tła: #<input type="text" name="tlo" maxlength="6" pattern="([0-9|a-f|A-F]{0,6})" title="Wprowadź ciąg znaków od A-F i/lub cyfry 0-9."> </label><br>
+        <label>Kolor tekstu:  #<input type="text" name="tekst" maxlength="6" pattern="([0-9|a-f|A-F]{0,6})" title="Wprowadź ciąg znaków od A-F i/lub cyfry 0-9."> </label><br>
+        <input type="submit" name="wyslij" value="Wyślij">
+    </form>
+    <h1>Komentarz:</h1>
+    <form method="post" action="zapisz.php">
+        <label>Pseudonim: <input type="text" name="pseudonim" required></label><br>
+        <label>Komentarz: <textarea placeholder="Dodaj komentarz" name="kom" required></textarea></label><br>
+        <input type="submit" name="send" value="Skomentuj">
+    </form>
+</body>
+</html>
