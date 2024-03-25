@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="kebabownia.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Kebabownia</title>
+  </head>
+
+  <body>
+    <div class="tlo"></div>
+    <div class="header">
+      <div>
+        <h1 style="margin: 0"><a href="./">Kebabownia</a></h1>
+        <h3 style="margin: 0">Zapisuj swoje ulubione kebabownie</h3>
+      </div>
+    </div>
+    <div class="main">
+      <a href="nowy-lokal.html">Dodaj nowy lokal kebabowy</a>
+    </div>
+    <div class="dane">
+      <div id="entries"></div>
+    </div>
+
+    <script>
+      var urlLocal = "http://localhost/kebabownia/";
+      $(document).ready(function () {
+        $.getJSON("getDane.php", function (data) {
+          var entries = data;
+
+          entries.forEach(function (entry, index) {
+            var entriesHtml = '<div class="entry" data-id="' + entry.id + '">';
+            entriesHtml += "<h3>" + entry.nazwa + "</h3>";
+            entriesHtml +=
+              '<p>Ocena: <span class="rating">' + entry.ocena + "</span>/5</p>";
+            entriesHtml +=
+              '<div id="map-' +
+              entry.id +
+              '" class="map"><div id="coordinates" style="display: block;">Szerokość: ' +
+              entry.szerokosc +
+              ", Długość: " +
+              entry.dlugosc +
+              "</div></div>";
+            entriesHtml += '<p class="opis">' + entry.opis + "</p>";
+            if (entry.opis.split("\n").length > 3) {
+              entriesHtml += '<p class="expand">Rozwiń</p>';
+            }
+            entriesHtml +=
+              '<button class="edit" data-id="' + entry.id + '">Edytuj</button>';
+            entriesHtml +=
+              '<button class="delete" data-id="' + entry.id + '">Usuń</button>';
+            entriesHtml += "</div>";
+
+            $("#entries").append(entriesHtml);
+
+            if ((index + 1) % 2 === 0) {
+              $("#entries").append('<div class="clear"></div>');
+            }
+            var miniMap = L.map("map-" + entry.id, {
+              maxBounds: [
+                [
+                  parseFloat(entry.szerokosc) - 5,
+                  parseFloat(entry.dlugosc) - 5,
+                ],
+                [
+                  parseFloat(entry.szerokosc) + 5,
+                  parseFloat(entry.dlugosc) + 5,
+                ],
+              ],
+              maxBoundsViscosity: 1.0,
+              minZoom: 2,
+            }).setView([entry.szerokosc, entry.dlugosc], 15);
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+              attribution:
+                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            }).addTo(miniMap);
+
+            L.marker([entry.szerokosc, entry.dlugosc])
+              .addTo(miniMap)
+              .bindPopup("<b>" + entry.nazwa + "</b><br>" + entry.opis);
+          });
+        });
+
+        $(document).on("click", ".expand", function () {
+          var opis = $(this).siblings(".opis");
+          opis.toggleClass("expanded");
+          if (opis.hasClass("expanded")) {
+            $(this).text("Zwiń");
+          } else {
+            $(this).text("Rozwiń");
+          }
+        });
+
+        $(document).on("click", ".edit", function () {
+          var entryId = $(this).data("id");
+          Swal.fire({
+            title: "Czy na pewno chcesz edytować ten wpis?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Tak, edytuj!",
+            cancelButtonText: "Anuluj",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              if (result.isConfirmed) {
+                window.location.href = "edycja-wpisu.php?id=" + entryId;
+              }
+            }
+          });
+        });
+
+        $(document).on("click", ".delete", function () {
+          var entryId = $(this).data("id");
+          console.log(entryId);
+          Swal.fire({
+            title: "Czy na pewno chcesz usunąć ten wpis?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Tak, usuń!",
+            cancelButtonText: "Anuluj",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              $.ajax({
+                url: urlLocal + "deleteEntry.php",
+                method: "post",
+                data: { id: entryId },
+                dataType: "json",
+                success: function (response) {
+                  if (response.success === "true") {
+                    Swal.fire({
+                      icon: "success",
+                      title: "Usunięto!",
+                      text: "Wpis został pomyślnie usunięty.",
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        location.reload();
+                      }
+                    });
+                  } else {
+                    Swal.fire({
+                      icon: "error",
+                      title: "Błąd!",
+                      text: "Coś poszło nie tak...",
+                    });
+                  }
+                },
+                error: function (xhr, status, error) {
+                  Swal.fire({
+                    icon: "error",
+                    title: "Wystąpił błąd podczas przesyłania danych",
+                    html: error,
+                  });
+                  console.log(xhr.responseText, status, error);
+                },
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

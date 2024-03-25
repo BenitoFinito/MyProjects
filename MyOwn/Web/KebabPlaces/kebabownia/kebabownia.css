@@ -1,0 +1,210 @@
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  position: relative;
+}
+
+.tlo {
+  position: fixed;
+  background: url("kebab.jpeg") no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  animation: silikon 15s linear infinite;
+}
+
+.header {
+  color: white;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.header a {
+  text-decoration: none;
+  color: red;
+}
+
+a {
+  text-decoration: none;
+  color: blue;
+}
+
+.main {
+  background-color: white;
+  margin: auto;
+  margin-top: 1rem;
+  border: 0.5rem rgb(149, 241, 87) double;
+  text-align: center;
+  width: 50%;
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+.form {
+  background-color: white;
+  margin: auto;
+  width: 70%;
+  margin-top: 1rem;
+  border: 0.5rem gray double;
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+.dane {
+  background-color: white;
+  margin: auto;
+  margin-top: 1rem;
+  border: 0.5rem rgb(67, 48, 238) double;
+  text-align: center;
+  width: 75%;
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+.header div {
+  border: 1rem burlywood solid;
+  background: radial-gradient(white, blue);
+  width: 50%;
+  padding: 1rem;
+  border-radius: 100%;
+}
+
+.entries {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.entry {
+  background-color: rgb(230, 230, 230);
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: calc(50% - 40px);
+  display: inline-block;
+  vertical-align: top;
+  text-align: left;
+}
+
+.entry h3 {
+  margin-top: 0;
+}
+
+.entry p {
+  margin: 10px 0;
+}
+
+.map {
+  height: 200px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.rating {
+  color: darkorchid;
+}
+
+.opis {
+  margin-top: 10px;
+  overflow: hidden;
+  max-height: 3.2em; 
+}
+
+.opis.expanded {
+  max-height: none; 
+  cursor: pointer; 
+}
+
+.expand {
+  cursor: pointer;
+  color: blue;
+  width: 0;
+}
+.expand:hover {
+  text-decoration: underline;
+}
+
+.ocena {
+  border: 1px dashed blue;
+  margin: 15px;
+}
+
+.ocena:hover,
+.ocena input:hover {
+  cursor: pointer;
+  background-color: yellow;
+}
+
+.delete {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.delete:hover {
+  background-color: darkred;
+}
+
+.edit {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.edit:hover {
+  background-color: #45a049;
+}
+
+#przycisk {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+#przycisk:hover {
+  background-color: #005f6b;
+}
+
+#coordinates {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: white;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 12px;
+  display: none;
+  z-index: 999;
+}
+
+@keyframes silikon {
+  0%,
+  100% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 0 100%;
+  }
+}
